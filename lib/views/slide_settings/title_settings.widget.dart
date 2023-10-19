@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_network_mate/providers/current_slide.provider.dart';
+import 'package:social_network_mate/views/widgets/alignment_field.widget.dart';
 import 'package:social_network_mate/views/widgets/color_field.widget.dart';
-import 'package:social_network_mate/views/widgets/int_field.widget.dart';
+import 'package:social_network_mate/views/widgets/custom_field.widget.dart';
+import 'package:social_network_mate/views/widgets/custom_text_field.widget.dart';
 
 class TitleSettings extends ConsumerWidget {
   const TitleSettings({super.key});
@@ -12,7 +13,7 @@ class TitleSettings extends ConsumerWidget {
     WidgetRef ref, {
     required Alignment alignment,
   }) {
-    final currentSlideTitle = ref.read(currentSlideProvider).title;
+    final currentSlideTitle = ref.read(currentSlideProvider).$1.title;
     ref.read(currentSlideProvider.notifier).updateSlideTitle(
           currentSlideTitle.copyWith(
             alignment: alignment,
@@ -27,7 +28,7 @@ class TitleSettings extends ConsumerWidget {
     double? right,
     double? bottom,
   }) {
-    final currentSlideTitle = ref.read(currentSlideProvider).title;
+    final currentSlideTitle = ref.read(currentSlideProvider).$1.title;
     ref.read(currentSlideProvider.notifier).updateSlideTitle(
           currentSlideTitle.copyWith(
             padding: EdgeInsets.all(left ?? currentSlideTitle.padding.left),
@@ -42,7 +43,7 @@ class TitleSettings extends ConsumerWidget {
     double? right,
     double? bottom,
   }) {
-    final currentSlideTitle = ref.read(currentSlideProvider).title;
+    final currentSlideTitle = ref.read(currentSlideProvider).$1.title;
     ref.read(currentSlideProvider.notifier).updateSlideTitle(
           currentSlideTitle.copyWith(
             margin: EdgeInsets.all(left ?? currentSlideTitle.margin.left),
@@ -54,7 +55,7 @@ class TitleSettings extends ConsumerWidget {
     WidgetRef ref, {
     Color? color,
   }) {
-    final currentSlideTitle = ref.read(currentSlideProvider).title;
+    final currentSlideTitle = ref.read(currentSlideProvider).$1.title;
     ref.read(currentSlideProvider.notifier).updateSlideTitle(
           currentSlideTitle.copyWith(
             backgroundColor: color ?? currentSlideTitle.backgroundColor,
@@ -66,7 +67,7 @@ class TitleSettings extends ConsumerWidget {
     WidgetRef ref, {
     Color? color,
   }) {
-    final currentSlideTitle = ref.read(currentSlideProvider).title;
+    final currentSlideTitle = ref.read(currentSlideProvider).$1.title;
     ref.read(currentSlideProvider.notifier).updateSlideTitle(
           currentSlideTitle.copyWith(
             color: color ?? currentSlideTitle.color,
@@ -81,7 +82,7 @@ class TitleSettings extends ConsumerWidget {
     double? bottomRight,
     double? bottomLeft,
   }) {
-    final currentSlideTitle = ref.read(currentSlideProvider).title;
+    final currentSlideTitle = ref.read(currentSlideProvider).$1.title;
     ref.read(currentSlideProvider.notifier).updateSlideTitle(
           currentSlideTitle.copyWith(
             borderRadius: currentSlideTitle.borderRadius.copyWith(
@@ -102,11 +103,23 @@ class TitleSettings extends ConsumerWidget {
         );
   }
 
+  void _updateFontSize(
+    WidgetRef ref, {
+    required int size,
+  }) {
+    final currentSlideTitle = ref.read(currentSlideProvider).$1.title;
+    ref.read(currentSlideProvider.notifier).updateSlideTitle(
+          currentSlideTitle.copyWith(
+            fontSize: size.toDouble(),
+          ),
+        );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentSlideTitle = ref.watch(
       currentSlideProvider.select(
-        (s) => s.title,
+        (s) => s.$1.title,
       ),
     );
     return Column(
@@ -121,22 +134,24 @@ class TitleSettings extends ConsumerWidget {
                 );
           },
         ),
-        TextField(
-          keyboardType: TextInputType.text,
-          inputFormatters: <TextInputFormatter>[],
-          controller: TextEditingController(
-            text: currentSlideTitle.title,
-          )..selection = TextSelection.collapsed(
-              offset: currentSlideTitle.title.length,
-            ),
+        CustomTextField(
+          value: currentSlideTitle.title,
           onChanged: (title) {
             ref.read(currentSlideProvider.notifier).updateSlideTitle(
                   currentSlideTitle.copyWith(title: title),
                 );
           },
         ),
+        CustomField(
+          label: 'Font size',
+          onChanged: (s) => _updateFontSize(
+            ref,
+            size: s,
+          ),
+          value: currentSlideTitle.fontSize.toInt(),
+        ),
         const Divider(),
-        IntField(
+        CustomField(
           label: 'Padding',
           onChanged: (p) => _updatePadding(
             ref,
@@ -147,7 +162,7 @@ class TitleSettings extends ConsumerWidget {
           ),
           value: currentSlideTitle.padding.left.toInt(),
         ),
-        IntField(
+        CustomField(
           label: 'Margin',
           onChanged: (p) => _updateMargin(
             ref,
@@ -158,7 +173,7 @@ class TitleSettings extends ConsumerWidget {
           ),
           value: currentSlideTitle.margin.left.toInt(),
         ),
-        IntField(
+        CustomField(
           label: 'Radius',
           onChanged: (r) => _updateRadius(
             ref,
@@ -187,79 +202,20 @@ class TitleSettings extends ConsumerWidget {
           value: currentSlideTitle.backgroundColor,
         ),
         const Divider(),
-        GridView.count(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          crossAxisCount: 3,
-          children: [
-            IconButton(
-              onPressed: () => _updateAlignment(
-                ref,
-                alignment: Alignment.topLeft,
-              ),
-              icon: const Icon(Icons.align_horizontal_center),
-            ),
-            IconButton(
-              onPressed: () => _updateAlignment(
-                ref,
-                alignment: Alignment.topCenter,
-              ),
-              icon: const Icon(Icons.align_horizontal_center),
-            ),
-            IconButton(
-              onPressed: () => _updateAlignment(
-                ref,
-                alignment: Alignment.topRight,
-              ),
-              icon: const Icon(Icons.align_horizontal_center),
-            ),
-            //
-            IconButton(
-              onPressed: () => _updateAlignment(
-                ref,
-                alignment: Alignment.centerLeft,
-              ),
-              icon: const Icon(Icons.align_horizontal_center),
-            ),
-            IconButton(
-              onPressed: () => _updateAlignment(
-                ref,
-                alignment: Alignment.center,
-              ),
-              icon: const Icon(Icons.align_horizontal_center),
-            ),
-            IconButton(
-              onPressed: () => _updateAlignment(
-                ref,
-                alignment: Alignment.centerRight,
-              ),
-              icon: const Icon(Icons.align_horizontal_center),
-            ),
-            //
-            IconButton(
-              onPressed: () => _updateAlignment(
-                ref,
-                alignment: Alignment.bottomLeft,
-              ),
-              icon: const Icon(Icons.align_horizontal_center),
-            ),
-            IconButton(
-              onPressed: () => _updateAlignment(
-                ref,
-                alignment: Alignment.bottomCenter,
-              ),
-              icon: const Icon(Icons.align_horizontal_center),
-            ),
-            IconButton(
-              onPressed: () => _updateAlignment(
-                ref,
-                alignment: Alignment.bottomRight,
-              ),
-              icon: const Icon(Icons.align_horizontal_center),
-            ),
-          ],
+        AlignmentField(
+          alignment: currentSlideTitle.alignment,
+          onChanged: (a) {
+            _updateAlignment(ref, alignment: a);
+          },
         ),
-      ],
+      ]
+          .map(
+            (e) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: e,
+            ),
+          )
+          .toList(),
     );
   }
 }

@@ -4,14 +4,14 @@ import 'package:social_network_mate/providers/current_slide.provider.dart';
 import 'package:social_network_mate/providers/slides.provider.dart';
 import 'package:social_network_mate/views/slide_thumbnail.widget.dart';
 
-class SlidesPreview extends ConsumerStatefulWidget {
-  const SlidesPreview({super.key});
+class BottomSlidesPreview extends ConsumerStatefulWidget {
+  const BottomSlidesPreview({super.key});
 
   @override
-  ConsumerState<SlidesPreview> createState() => SlidesPreviewState();
+  ConsumerState<BottomSlidesPreview> createState() => SlidesPreviewState();
 }
 
-class SlidesPreviewState extends ConsumerState<SlidesPreview> {
+class SlidesPreviewState extends ConsumerState<BottomSlidesPreview> {
   late ScrollController _scrollController;
 
   @override
@@ -29,23 +29,14 @@ class SlidesPreviewState extends ConsumerState<SlidesPreview> {
   @override
   Widget build(BuildContext context) {
     final slides = ref.watch(slidesProvider);
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 10,
-            offset: const Offset(0, 0),
-          ),
-        ],
-      ),
+    return Material(
+      elevation: 6,
       child: Scrollbar(
         controller: _scrollController,
         scrollbarOrientation: ScrollbarOrientation.bottom,
         thumbVisibility: true,
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.all(8),
           child: ReorderableListView(
             proxyDecorator: proxyDecorator,
             scrollController: _scrollController,
@@ -59,15 +50,23 @@ class SlidesPreviewState extends ConsumerState<SlidesPreview> {
             children: [
               ...slides.map(
                 (slide) => InkWell(
-                  key: Key(slide.id),
+                  key: Key(slide.$1.id),
                   onTap: () {
                     ref
                         .read(currentSlideProvider.notifier)
-                        .selectSlide(slide.id);
+                        .selectSlide(slide.$1.id);
                   },
-                  child: Padding(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color:
+                          ref.watch(currentSlideProvider).$1.id == slide.$1.id
+                              ? Theme.of(context).primaryColor.withOpacity(0.2)
+                              : Colors.transparent,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                     padding: const EdgeInsets.all(8.0),
-                    child: SlideThumbnail(slide: slide),
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: SlideThumbnail(slide: slide.$1),
                   ),
                 ),
               ),

@@ -13,7 +13,7 @@ class Slide with _$Slide {
     required String id,
     @Default(defaultSlideTitle) SlideTitle title,
     @Default(defaultSlideSettings) SlideSettings settings,
-    @SlideContentConverter() SlideContent? content,
+    @Default([]) @SlideContentConverter() List<SlideContent> contents,
   }) = _Slide;
 
   factory Slide.fromJson(Map<String, Object?> json) => _$SlideFromJson(json);

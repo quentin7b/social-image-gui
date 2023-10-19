@@ -24,7 +24,7 @@ mixin _$Slide {
   SlideTitle get title => throw _privateConstructorUsedError;
   SlideSettings get settings => throw _privateConstructorUsedError;
   @SlideContentConverter()
-  SlideContent? get content => throw _privateConstructorUsedError;
+  List<SlideContent> get contents => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +40,7 @@ abstract class $SlideCopyWith<$Res> {
       {String id,
       SlideTitle title,
       SlideSettings settings,
-      @SlideContentConverter() SlideContent? content});
+      @SlideContentConverter() List<SlideContent> contents});
 
   $SlideTitleCopyWith<$Res> get title;
   $SlideSettingsCopyWith<$Res> get settings;
@@ -62,7 +62,7 @@ class _$SlideCopyWithImpl<$Res, $Val extends Slide>
     Object? id = null,
     Object? title = null,
     Object? settings = null,
-    Object? content = freezed,
+    Object? contents = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -77,10 +77,10 @@ class _$SlideCopyWithImpl<$Res, $Val extends Slide>
           ? _value.settings
           : settings // ignore: cast_nullable_to_non_nullable
               as SlideSettings,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as SlideContent?,
+      contents: null == contents
+          ? _value.contents
+          : contents // ignore: cast_nullable_to_non_nullable
+              as List<SlideContent>,
     ) as $Val);
   }
 
@@ -112,7 +112,7 @@ abstract class _$$SlideImplCopyWith<$Res> implements $SlideCopyWith<$Res> {
       {String id,
       SlideTitle title,
       SlideSettings settings,
-      @SlideContentConverter() SlideContent? content});
+      @SlideContentConverter() List<SlideContent> contents});
 
   @override
   $SlideTitleCopyWith<$Res> get title;
@@ -134,7 +134,7 @@ class __$$SlideImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? settings = null,
-    Object? content = freezed,
+    Object? contents = null,
   }) {
     return _then(_$SlideImpl(
       id: null == id
@@ -149,10 +149,10 @@ class __$$SlideImplCopyWithImpl<$Res>
           ? _value.settings
           : settings // ignore: cast_nullable_to_non_nullable
               as SlideSettings,
-      content: freezed == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as SlideContent?,
+      contents: null == contents
+          ? _value._contents
+          : contents // ignore: cast_nullable_to_non_nullable
+              as List<SlideContent>,
     ));
   }
 }
@@ -164,7 +164,8 @@ class _$SlideImpl implements _Slide {
       {required this.id,
       this.title = defaultSlideTitle,
       this.settings = defaultSlideSettings,
-      @SlideContentConverter() this.content});
+      @SlideContentConverter() final List<SlideContent> contents = const []})
+      : _contents = contents;
 
   factory _$SlideImpl.fromJson(Map<String, dynamic> json) =>
       _$$SlideImplFromJson(json);
@@ -177,13 +178,19 @@ class _$SlideImpl implements _Slide {
   @override
   @JsonKey()
   final SlideSettings settings;
+  final List<SlideContent> _contents;
   @override
+  @JsonKey()
   @SlideContentConverter()
-  final SlideContent? content;
+  List<SlideContent> get contents {
+    if (_contents is EqualUnmodifiableListView) return _contents;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_contents);
+  }
 
   @override
   String toString() {
-    return 'Slide(id: $id, title: $title, settings: $settings, content: $content)';
+    return 'Slide(id: $id, title: $title, settings: $settings, contents: $contents)';
   }
 
   @override
@@ -195,12 +202,13 @@ class _$SlideImpl implements _Slide {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.settings, settings) ||
                 other.settings == settings) &&
-            (identical(other.content, content) || other.content == content));
+            const DeepCollectionEquality().equals(other._contents, _contents));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, settings, content);
+  int get hashCode => Object.hash(runtimeType, id, title, settings,
+      const DeepCollectionEquality().hash(_contents));
 
   @JsonKey(ignore: true)
   @override
@@ -218,10 +226,11 @@ class _$SlideImpl implements _Slide {
 
 abstract class _Slide implements Slide {
   const factory _Slide(
-      {required final String id,
-      final SlideTitle title,
-      final SlideSettings settings,
-      @SlideContentConverter() final SlideContent? content}) = _$SlideImpl;
+          {required final String id,
+          final SlideTitle title,
+          final SlideSettings settings,
+          @SlideContentConverter() final List<SlideContent> contents}) =
+      _$SlideImpl;
 
   factory _Slide.fromJson(Map<String, dynamic> json) = _$SlideImpl.fromJson;
 
@@ -233,7 +242,7 @@ abstract class _Slide implements Slide {
   SlideSettings get settings;
   @override
   @SlideContentConverter()
-  SlideContent? get content;
+  List<SlideContent> get contents;
   @override
   @JsonKey(ignore: true)
   _$$SlideImplCopyWith<_$SlideImpl> get copyWith =>

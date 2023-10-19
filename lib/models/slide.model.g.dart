@@ -14,8 +14,11 @@ _$SlideImpl _$$SlideImplFromJson(Map<String, dynamic> json) => _$SlideImpl(
       settings: json['settings'] == null
           ? defaultSlideSettings
           : SlideSettings.fromJson(json['settings'] as Map<String, dynamic>),
-      content: _$JsonConverterFromJson<Map<String, dynamic>, SlideContent>(
-          json['content'], const SlideContentConverter().fromJson),
+      contents: (json['contents'] as List<dynamic>?)
+              ?.map((e) => const SlideContentConverter()
+                  .fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$SlideImplToJson(_$SlideImpl instance) =>
@@ -23,18 +26,6 @@ Map<String, dynamic> _$$SlideImplToJson(_$SlideImpl instance) =>
       'id': instance.id,
       'title': instance.title,
       'settings': instance.settings,
-      'content': _$JsonConverterToJson<Map<String, dynamic>, SlideContent>(
-          instance.content, const SlideContentConverter().toJson),
+      'contents':
+          instance.contents.map(const SlideContentConverter().toJson).toList(),
     };
-
-Value? _$JsonConverterFromJson<Json, Value>(
-  Object? json,
-  Value? Function(Json json) fromJson,
-) =>
-    json == null ? null : fromJson(json as Json);
-
-Json? _$JsonConverterToJson<Json, Value>(
-  Value? value,
-  Json? Function(Value value) toJson,
-) =>
-    value == null ? null : toJson(value);

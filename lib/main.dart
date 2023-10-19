@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:social_network_mate/providers/theme.provider.dart';
 import 'package:social_network_mate/views/carousel_editor.widget.dart';
 
 void main() {
   runApp(const ProviderScope(child: MainApp()));
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends ConsumerWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp(
+      theme: switch (ref.watch(themeProvider)) {
+        ThemeValue.light => ThemeData.light(),
+        ThemeValue.dark => ThemeData.dark(),
+        ThemeValue.os => ThemeData.from(
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+              brightness: Brightness.light,
+            ),
+          ),
+      },
+      home: const Scaffold(
         body: Center(child: CarouselEditor()),
       ),
     );

@@ -2,10 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_network_mate/providers/current_slide.provider.dart';
 import 'package:social_network_mate/views/widgets/color_field.widget.dart';
-import 'package:social_network_mate/views/widgets/int_field.widget.dart';
+import 'package:social_network_mate/views/widgets/custom_field.widget.dart';
 
 class BoxSettings extends ConsumerWidget {
   const BoxSettings({super.key});
+
+  void _updateBackgroundImage(WidgetRef ref, {String? imageUrl}) {
+    final currentSlideSettings = ref.read(
+      currentSlideProvider.select(
+        (s) => s.$1.settings,
+      ),
+    );
+    ref
+        .read(
+          currentSlideProvider.notifier,
+        )
+        .updateSlideSettings(
+          currentSlideSettings.copyWith(
+            backgroundImageUrl:
+                imageUrl ?? currentSlideSettings.backgroundImageUrl,
+          ),
+        );
+  }
 
   void _updateBackgroundColor(
     WidgetRef ref, {
@@ -13,7 +31,7 @@ class BoxSettings extends ConsumerWidget {
   }) {
     final currentSlideSettings = ref.read(
       currentSlideProvider.select(
-        (s) => s.settings,
+        (s) => s.$1.settings,
       ),
     );
     ref
@@ -36,7 +54,7 @@ class BoxSettings extends ConsumerWidget {
   }) {
     final currentSlideSettings = ref.read(
       currentSlideProvider.select(
-        (s) => s.settings,
+        (s) => s.$1.settings,
       ),
     );
     ref
@@ -64,7 +82,7 @@ class BoxSettings extends ConsumerWidget {
   }) {
     final currentSlideSettings = ref.read(
       currentSlideProvider.select(
-        (s) => s.settings,
+        (s) => s.$1.settings,
       ),
     );
     ref
@@ -92,7 +110,7 @@ class BoxSettings extends ConsumerWidget {
   }) {
     final currentSlideSettings = ref.read(
       currentSlideProvider.select(
-        (s) => s.settings,
+        (s) => s.$1.settings,
       ),
     );
     ref
@@ -123,14 +141,14 @@ class BoxSettings extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentSlideSettings = ref.watch(
       currentSlideProvider.select(
-        (s) => s.settings,
+        (s) => s.$1.settings,
       ),
     );
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        IntField(
+        CustomField(
           label: 'Margin',
           onChanged: (m) => _updateMargin(
             ref,
@@ -141,7 +159,7 @@ class BoxSettings extends ConsumerWidget {
           ),
           value: currentSlideSettings.margin.left.toInt(),
         ),
-        IntField(
+        CustomField(
           label: 'Padding',
           onChanged: (p) => _updatePadding(
             ref,
@@ -153,7 +171,7 @@ class BoxSettings extends ConsumerWidget {
           value: currentSlideSettings.padding.left.toInt(),
         ),
         const Divider(),
-        IntField(
+        CustomField(
           label: 'Radius',
           onChanged: (r) => _updateRadius(
             ref,
@@ -173,7 +191,22 @@ class BoxSettings extends ConsumerWidget {
           ),
           value: currentSlideSettings.backgroundColor,
         ),
-      ],
+        CustomField(
+          label: 'Background Image',
+          value: currentSlideSettings.backgroundImageUrl ?? '',
+          onChanged: (url) => _updateBackgroundImage(
+            ref,
+            imageUrl: url,
+          ),
+        ),
+      ]
+          .map(
+            (e) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: e,
+            ),
+          )
+          .toList(),
     );
   }
 }

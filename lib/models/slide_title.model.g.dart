@@ -13,21 +13,21 @@ _$SlideTitleImpl _$$SlideTitleImplFromJson(Map<String, dynamic> json) =>
       fontWeight:
           const FontWeightConverter().fromJson(json['fontWeight'] as int),
       fontSize: (json['fontSize'] as num).toDouble(),
-      color: const ColorConverter().fromJson(json['color'] as int),
+      color: const ColorConverter().fromJson(json['color'] as String),
       backgroundColor: json['backgroundColor'] == null
           ? Colors.transparent
-          : const ColorConverter().fromJson(json['backgroundColor'] as int),
+          : const ColorConverter().fromJson(json['backgroundColor'] as String),
       fontFamily: json['fontFamily'] as String,
       alignment: const AlignmentConverter()
-          .fromJson(json['alignment'] as Map<String, double>),
+          .fromJson(json['alignment'] as Map<String, dynamic>),
       margin: json['margin'] == null
           ? EdgeInsets.zero
           : const EdgeInsetsConverter()
-              .fromJson(json['margin'] as Map<String, double>),
+              .fromJson(json['margin'] as Map<String, dynamic>),
       padding: json['padding'] == null
           ? EdgeInsets.zero
           : const EdgeInsetsConverter()
-              .fromJson(json['padding'] as Map<String, double>),
+              .fromJson(json['padding'] as Map<String, dynamic>),
       borderRadius: json['borderRadius'] == null
           ? BorderRadius.zero
           : const BorderRadiusConverter()

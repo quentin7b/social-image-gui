@@ -8,8 +8,13 @@ class SlideContentConverter
   @override
   SlideContent fromJson(Map<String, dynamic> json) {
     return switch (json['type'] as String) {
+      'text' => TextSlideContent.fromJson(json['data'] as Map<String, dynamic>)
+          as SlideContent,
       'list' => ListSlideContent.fromJson(json['data'] as Map<String, dynamic>)
           as SlideContent,
+      'image' =>
+        ImageSlideContent.fromJson(json['data'] as Map<String, dynamic>)
+            as SlideContent,
       _ => throw Exception('Unknown SlideContentType: ${json['type']}'),
     };
   }

@@ -20,7 +20,25 @@ TextSlideContent _$TextSlideContentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TextSlideContent {
+  String get id => throw _privateConstructorUsedError;
   SlideContentType get type => throw _privateConstructorUsedError;
+  @AlignmentConverter()
+  Alignment get alignment => throw _privateConstructorUsedError;
+  @EdgeInsetsConverter()
+  EdgeInsets get margin => throw _privateConstructorUsedError;
+  @EdgeInsetsConverter()
+  EdgeInsets get padding => throw _privateConstructorUsedError;
+  @ColorConverter()
+  Color get color => throw _privateConstructorUsedError;
+  @ColorConverter()
+  Color get backgroundColor => throw _privateConstructorUsedError;
+  int get rotationDegrees => throw _privateConstructorUsedError;
+  @FontWeightConverter()
+  FontWeight get fontWeight => throw _privateConstructorUsedError;
+  @BorderRadiusConverter()
+  BorderRadius get borderRadius => throw _privateConstructorUsedError;
+  String? get backgroundImageUrl => throw _privateConstructorUsedError;
+  double get fontSize => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +53,20 @@ abstract class $TextSlideContentCopyWith<$Res> {
           TextSlideContent value, $Res Function(TextSlideContent) then) =
       _$TextSlideContentCopyWithImpl<$Res, TextSlideContent>;
   @useResult
-  $Res call({SlideContentType type, String text});
+  $Res call(
+      {String id,
+      SlideContentType type,
+      @AlignmentConverter() Alignment alignment,
+      @EdgeInsetsConverter() EdgeInsets margin,
+      @EdgeInsetsConverter() EdgeInsets padding,
+      @ColorConverter() Color color,
+      @ColorConverter() Color backgroundColor,
+      int rotationDegrees,
+      @FontWeightConverter() FontWeight fontWeight,
+      @BorderRadiusConverter() BorderRadius borderRadius,
+      String? backgroundImageUrl,
+      double fontSize,
+      String text});
 }
 
 /// @nodoc
@@ -51,14 +82,69 @@ class _$TextSlideContentCopyWithImpl<$Res, $Val extends TextSlideContent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? type = null,
+    Object? alignment = null,
+    Object? margin = null,
+    Object? padding = null,
+    Object? color = null,
+    Object? backgroundColor = null,
+    Object? rotationDegrees = null,
+    Object? fontWeight = null,
+    Object? borderRadius = null,
+    Object? backgroundImageUrl = freezed,
+    Object? fontSize = null,
     Object? text = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SlideContentType,
+      alignment: null == alignment
+          ? _value.alignment
+          : alignment // ignore: cast_nullable_to_non_nullable
+              as Alignment,
+      margin: null == margin
+          ? _value.margin
+          : margin // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      padding: null == padding
+          ? _value.padding
+          : padding // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+      backgroundColor: null == backgroundColor
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+      rotationDegrees: null == rotationDegrees
+          ? _value.rotationDegrees
+          : rotationDegrees // ignore: cast_nullable_to_non_nullable
+              as int,
+      fontWeight: null == fontWeight
+          ? _value.fontWeight
+          : fontWeight // ignore: cast_nullable_to_non_nullable
+              as FontWeight,
+      borderRadius: null == borderRadius
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as BorderRadius,
+      backgroundImageUrl: freezed == backgroundImageUrl
+          ? _value.backgroundImageUrl
+          : backgroundImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fontSize: null == fontSize
+          ? _value.fontSize
+          : fontSize // ignore: cast_nullable_to_non_nullable
+              as double,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -75,7 +161,20 @@ abstract class _$$TextSlideContentImplCopyWith<$Res>
       __$$TextSlideContentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SlideContentType type, String text});
+  $Res call(
+      {String id,
+      SlideContentType type,
+      @AlignmentConverter() Alignment alignment,
+      @EdgeInsetsConverter() EdgeInsets margin,
+      @EdgeInsetsConverter() EdgeInsets padding,
+      @ColorConverter() Color color,
+      @ColorConverter() Color backgroundColor,
+      int rotationDegrees,
+      @FontWeightConverter() FontWeight fontWeight,
+      @BorderRadiusConverter() BorderRadius borderRadius,
+      String? backgroundImageUrl,
+      double fontSize,
+      String text});
 }
 
 /// @nodoc
@@ -89,14 +188,69 @@ class __$$TextSlideContentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? type = null,
+    Object? alignment = null,
+    Object? margin = null,
+    Object? padding = null,
+    Object? color = null,
+    Object? backgroundColor = null,
+    Object? rotationDegrees = null,
+    Object? fontWeight = null,
+    Object? borderRadius = null,
+    Object? backgroundImageUrl = freezed,
+    Object? fontSize = null,
     Object? text = null,
   }) {
     return _then(_$TextSlideContentImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SlideContentType,
+      alignment: null == alignment
+          ? _value.alignment
+          : alignment // ignore: cast_nullable_to_non_nullable
+              as Alignment,
+      margin: null == margin
+          ? _value.margin
+          : margin // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      padding: null == padding
+          ? _value.padding
+          : padding // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+      backgroundColor: null == backgroundColor
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+      rotationDegrees: null == rotationDegrees
+          ? _value.rotationDegrees
+          : rotationDegrees // ignore: cast_nullable_to_non_nullable
+              as int,
+      fontWeight: null == fontWeight
+          ? _value.fontWeight
+          : fontWeight // ignore: cast_nullable_to_non_nullable
+              as FontWeight,
+      borderRadius: null == borderRadius
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as BorderRadius,
+      backgroundImageUrl: freezed == backgroundImageUrl
+          ? _value.backgroundImageUrl
+          : backgroundImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fontSize: null == fontSize
+          ? _value.fontSize
+          : fontSize // ignore: cast_nullable_to_non_nullable
+              as double,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -109,20 +263,69 @@ class __$$TextSlideContentImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TextSlideContentImpl implements _TextSlideContent {
   const _$TextSlideContentImpl(
-      {this.type = SlideContentType.text, required this.text});
+      {required this.id,
+      this.type = SlideContentType.text,
+      @AlignmentConverter() this.alignment = Alignment.center,
+      @EdgeInsetsConverter() this.margin = EdgeInsets.zero,
+      @EdgeInsetsConverter() this.padding = EdgeInsets.zero,
+      @ColorConverter() this.color = Colors.black,
+      @ColorConverter() this.backgroundColor = Colors.transparent,
+      this.rotationDegrees = 0,
+      @FontWeightConverter() this.fontWeight = FontWeight.normal,
+      @BorderRadiusConverter() this.borderRadius = BorderRadius.zero,
+      this.backgroundImageUrl,
+      required this.fontSize,
+      required this.text});
 
   factory _$TextSlideContentImpl.fromJson(Map<String, dynamic> json) =>
       _$$TextSlideContentImplFromJson(json);
 
   @override
+  final String id;
+  @override
   @JsonKey()
   final SlideContentType type;
+  @override
+  @JsonKey()
+  @AlignmentConverter()
+  final Alignment alignment;
+  @override
+  @JsonKey()
+  @EdgeInsetsConverter()
+  final EdgeInsets margin;
+  @override
+  @JsonKey()
+  @EdgeInsetsConverter()
+  final EdgeInsets padding;
+  @override
+  @JsonKey()
+  @ColorConverter()
+  final Color color;
+  @override
+  @JsonKey()
+  @ColorConverter()
+  final Color backgroundColor;
+  @override
+  @JsonKey()
+  final int rotationDegrees;
+  @override
+  @JsonKey()
+  @FontWeightConverter()
+  final FontWeight fontWeight;
+  @override
+  @JsonKey()
+  @BorderRadiusConverter()
+  final BorderRadius borderRadius;
+  @override
+  final String? backgroundImageUrl;
+  @override
+  final double fontSize;
   @override
   final String text;
 
   @override
   String toString() {
-    return 'TextSlideContent(type: $type, text: $text)';
+    return 'TextSlideContent(id: $id, type: $type, alignment: $alignment, margin: $margin, padding: $padding, color: $color, backgroundColor: $backgroundColor, rotationDegrees: $rotationDegrees, fontWeight: $fontWeight, borderRadius: $borderRadius, backgroundImageUrl: $backgroundImageUrl, fontSize: $fontSize, text: $text)';
   }
 
   @override
@@ -130,13 +333,45 @@ class _$TextSlideContentImpl implements _TextSlideContent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TextSlideContentImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.margin, margin) || other.margin == margin) &&
+            (identical(other.padding, padding) || other.padding == padding) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.rotationDegrees, rotationDegrees) ||
+                other.rotationDegrees == rotationDegrees) &&
+            (identical(other.fontWeight, fontWeight) ||
+                other.fontWeight == fontWeight) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius) &&
+            (identical(other.backgroundImageUrl, backgroundImageUrl) ||
+                other.backgroundImageUrl == backgroundImageUrl) &&
+            (identical(other.fontSize, fontSize) ||
+                other.fontSize == fontSize) &&
             (identical(other.text, text) || other.text == text));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, type, text);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      type,
+      alignment,
+      margin,
+      padding,
+      color,
+      backgroundColor,
+      rotationDegrees,
+      fontWeight,
+      borderRadius,
+      backgroundImageUrl,
+      fontSize,
+      text);
 
   @JsonKey(ignore: true)
   @override
@@ -155,14 +390,54 @@ class _$TextSlideContentImpl implements _TextSlideContent {
 
 abstract class _TextSlideContent implements TextSlideContent, SlideContent {
   const factory _TextSlideContent(
-      {final SlideContentType type,
+      {required final String id,
+      final SlideContentType type,
+      @AlignmentConverter() final Alignment alignment,
+      @EdgeInsetsConverter() final EdgeInsets margin,
+      @EdgeInsetsConverter() final EdgeInsets padding,
+      @ColorConverter() final Color color,
+      @ColorConverter() final Color backgroundColor,
+      final int rotationDegrees,
+      @FontWeightConverter() final FontWeight fontWeight,
+      @BorderRadiusConverter() final BorderRadius borderRadius,
+      final String? backgroundImageUrl,
+      required final double fontSize,
       required final String text}) = _$TextSlideContentImpl;
 
   factory _TextSlideContent.fromJson(Map<String, dynamic> json) =
       _$TextSlideContentImpl.fromJson;
 
   @override
+  String get id;
+  @override
   SlideContentType get type;
+  @override
+  @AlignmentConverter()
+  Alignment get alignment;
+  @override
+  @EdgeInsetsConverter()
+  EdgeInsets get margin;
+  @override
+  @EdgeInsetsConverter()
+  EdgeInsets get padding;
+  @override
+  @ColorConverter()
+  Color get color;
+  @override
+  @ColorConverter()
+  Color get backgroundColor;
+  @override
+  int get rotationDegrees;
+  @override
+  @FontWeightConverter()
+  FontWeight get fontWeight;
+  @override
+  @BorderRadiusConverter()
+  BorderRadius get borderRadius;
+  @override
+  String? get backgroundImageUrl;
+  @override
+  double get fontSize;
   @override
   String get text;
   @override
@@ -177,8 +452,25 @@ ListSlideContent _$ListSlideContentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ListSlideContent {
+  String get id => throw _privateConstructorUsedError;
   SlideContentType get type => throw _privateConstructorUsedError;
+  @AlignmentConverter()
+  Alignment get alignment => throw _privateConstructorUsedError;
+  @EdgeInsetsConverter()
+  EdgeInsets get margin => throw _privateConstructorUsedError;
+  @EdgeInsetsConverter()
+  EdgeInsets get padding => throw _privateConstructorUsedError;
+  @ColorConverter()
+  Color get color => throw _privateConstructorUsedError;
+  @ColorConverter()
+  Color get backgroundColor => throw _privateConstructorUsedError;
+  int get rotationDegrees => throw _privateConstructorUsedError;
+  @BorderRadiusConverter()
+  BorderRadius get borderRadius => throw _privateConstructorUsedError;
+  String? get backgroundImageUrl => throw _privateConstructorUsedError;
+  bool get hasDividers => throw _privateConstructorUsedError;
   List<String> get items => throw _privateConstructorUsedError;
+  double get fontSize => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -192,7 +484,20 @@ abstract class $ListSlideContentCopyWith<$Res> {
           ListSlideContent value, $Res Function(ListSlideContent) then) =
       _$ListSlideContentCopyWithImpl<$Res, ListSlideContent>;
   @useResult
-  $Res call({SlideContentType type, List<String> items});
+  $Res call(
+      {String id,
+      SlideContentType type,
+      @AlignmentConverter() Alignment alignment,
+      @EdgeInsetsConverter() EdgeInsets margin,
+      @EdgeInsetsConverter() EdgeInsets padding,
+      @ColorConverter() Color color,
+      @ColorConverter() Color backgroundColor,
+      int rotationDegrees,
+      @BorderRadiusConverter() BorderRadius borderRadius,
+      String? backgroundImageUrl,
+      bool hasDividers,
+      List<String> items,
+      double fontSize});
 }
 
 /// @nodoc
@@ -208,18 +513,73 @@ class _$ListSlideContentCopyWithImpl<$Res, $Val extends ListSlideContent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? type = null,
+    Object? alignment = null,
+    Object? margin = null,
+    Object? padding = null,
+    Object? color = null,
+    Object? backgroundColor = null,
+    Object? rotationDegrees = null,
+    Object? borderRadius = null,
+    Object? backgroundImageUrl = freezed,
+    Object? hasDividers = null,
     Object? items = null,
+    Object? fontSize = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SlideContentType,
+      alignment: null == alignment
+          ? _value.alignment
+          : alignment // ignore: cast_nullable_to_non_nullable
+              as Alignment,
+      margin: null == margin
+          ? _value.margin
+          : margin // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      padding: null == padding
+          ? _value.padding
+          : padding // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+      backgroundColor: null == backgroundColor
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+      rotationDegrees: null == rotationDegrees
+          ? _value.rotationDegrees
+          : rotationDegrees // ignore: cast_nullable_to_non_nullable
+              as int,
+      borderRadius: null == borderRadius
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as BorderRadius,
+      backgroundImageUrl: freezed == backgroundImageUrl
+          ? _value.backgroundImageUrl
+          : backgroundImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hasDividers: null == hasDividers
+          ? _value.hasDividers
+          : hasDividers // ignore: cast_nullable_to_non_nullable
+              as bool,
       items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      fontSize: null == fontSize
+          ? _value.fontSize
+          : fontSize // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -232,7 +592,20 @@ abstract class _$$ListSlideContentImplCopyWith<$Res>
       __$$ListSlideContentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SlideContentType type, List<String> items});
+  $Res call(
+      {String id,
+      SlideContentType type,
+      @AlignmentConverter() Alignment alignment,
+      @EdgeInsetsConverter() EdgeInsets margin,
+      @EdgeInsetsConverter() EdgeInsets padding,
+      @ColorConverter() Color color,
+      @ColorConverter() Color backgroundColor,
+      int rotationDegrees,
+      @BorderRadiusConverter() BorderRadius borderRadius,
+      String? backgroundImageUrl,
+      bool hasDividers,
+      List<String> items,
+      double fontSize});
 }
 
 /// @nodoc
@@ -246,18 +619,73 @@ class __$$ListSlideContentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? type = null,
+    Object? alignment = null,
+    Object? margin = null,
+    Object? padding = null,
+    Object? color = null,
+    Object? backgroundColor = null,
+    Object? rotationDegrees = null,
+    Object? borderRadius = null,
+    Object? backgroundImageUrl = freezed,
+    Object? hasDividers = null,
     Object? items = null,
+    Object? fontSize = null,
   }) {
     return _then(_$ListSlideContentImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SlideContentType,
+      alignment: null == alignment
+          ? _value.alignment
+          : alignment // ignore: cast_nullable_to_non_nullable
+              as Alignment,
+      margin: null == margin
+          ? _value.margin
+          : margin // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      padding: null == padding
+          ? _value.padding
+          : padding // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+      backgroundColor: null == backgroundColor
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+      rotationDegrees: null == rotationDegrees
+          ? _value.rotationDegrees
+          : rotationDegrees // ignore: cast_nullable_to_non_nullable
+              as int,
+      borderRadius: null == borderRadius
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as BorderRadius,
+      backgroundImageUrl: freezed == backgroundImageUrl
+          ? _value.backgroundImageUrl
+          : backgroundImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hasDividers: null == hasDividers
+          ? _value.hasDividers
+          : hasDividers // ignore: cast_nullable_to_non_nullable
+              as bool,
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      fontSize: null == fontSize
+          ? _value.fontSize
+          : fontSize // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -266,15 +694,61 @@ class __$$ListSlideContentImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ListSlideContentImpl implements _ListSlideContent {
   const _$ListSlideContentImpl(
-      {this.type = SlideContentType.list, required final List<String> items})
+      {required this.id,
+      this.type = SlideContentType.list,
+      @AlignmentConverter() this.alignment = Alignment.center,
+      @EdgeInsetsConverter() this.margin = EdgeInsets.zero,
+      @EdgeInsetsConverter() this.padding = EdgeInsets.zero,
+      @ColorConverter() this.color = Colors.black,
+      @ColorConverter() this.backgroundColor = Colors.transparent,
+      this.rotationDegrees = 0,
+      @BorderRadiusConverter() this.borderRadius = BorderRadius.zero,
+      this.backgroundImageUrl,
+      this.hasDividers = false,
+      required final List<String> items,
+      required this.fontSize})
       : _items = items;
 
   factory _$ListSlideContentImpl.fromJson(Map<String, dynamic> json) =>
       _$$ListSlideContentImplFromJson(json);
 
   @override
+  final String id;
+  @override
   @JsonKey()
   final SlideContentType type;
+  @override
+  @JsonKey()
+  @AlignmentConverter()
+  final Alignment alignment;
+  @override
+  @JsonKey()
+  @EdgeInsetsConverter()
+  final EdgeInsets margin;
+  @override
+  @JsonKey()
+  @EdgeInsetsConverter()
+  final EdgeInsets padding;
+  @override
+  @JsonKey()
+  @ColorConverter()
+  final Color color;
+  @override
+  @JsonKey()
+  @ColorConverter()
+  final Color backgroundColor;
+  @override
+  @JsonKey()
+  final int rotationDegrees;
+  @override
+  @JsonKey()
+  @BorderRadiusConverter()
+  final BorderRadius borderRadius;
+  @override
+  final String? backgroundImageUrl;
+  @override
+  @JsonKey()
+  final bool hasDividers;
   final List<String> _items;
   @override
   List<String> get items {
@@ -284,8 +758,11 @@ class _$ListSlideContentImpl implements _ListSlideContent {
   }
 
   @override
+  final double fontSize;
+
+  @override
   String toString() {
-    return 'ListSlideContent(type: $type, items: $items)';
+    return 'ListSlideContent(id: $id, type: $type, alignment: $alignment, margin: $margin, padding: $padding, color: $color, backgroundColor: $backgroundColor, rotationDegrees: $rotationDegrees, borderRadius: $borderRadius, backgroundImageUrl: $backgroundImageUrl, hasDividers: $hasDividers, items: $items, fontSize: $fontSize)';
   }
 
   @override
@@ -293,14 +770,45 @@ class _$ListSlideContentImpl implements _ListSlideContent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ListSlideContentImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(other._items, _items));
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.margin, margin) || other.margin == margin) &&
+            (identical(other.padding, padding) || other.padding == padding) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.rotationDegrees, rotationDegrees) ||
+                other.rotationDegrees == rotationDegrees) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius) &&
+            (identical(other.backgroundImageUrl, backgroundImageUrl) ||
+                other.backgroundImageUrl == backgroundImageUrl) &&
+            (identical(other.hasDividers, hasDividers) ||
+                other.hasDividers == hasDividers) &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.fontSize, fontSize) ||
+                other.fontSize == fontSize));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, type, const DeepCollectionEquality().hash(_items));
+      runtimeType,
+      id,
+      type,
+      alignment,
+      margin,
+      padding,
+      color,
+      backgroundColor,
+      rotationDegrees,
+      borderRadius,
+      backgroundImageUrl,
+      hasDividers,
+      const DeepCollectionEquality().hash(_items),
+      fontSize);
 
   @JsonKey(ignore: true)
   @override
@@ -319,16 +827,55 @@ class _$ListSlideContentImpl implements _ListSlideContent {
 
 abstract class _ListSlideContent implements ListSlideContent, SlideContent {
   const factory _ListSlideContent(
-      {final SlideContentType type,
-      required final List<String> items}) = _$ListSlideContentImpl;
+      {required final String id,
+      final SlideContentType type,
+      @AlignmentConverter() final Alignment alignment,
+      @EdgeInsetsConverter() final EdgeInsets margin,
+      @EdgeInsetsConverter() final EdgeInsets padding,
+      @ColorConverter() final Color color,
+      @ColorConverter() final Color backgroundColor,
+      final int rotationDegrees,
+      @BorderRadiusConverter() final BorderRadius borderRadius,
+      final String? backgroundImageUrl,
+      final bool hasDividers,
+      required final List<String> items,
+      required final double fontSize}) = _$ListSlideContentImpl;
 
   factory _ListSlideContent.fromJson(Map<String, dynamic> json) =
       _$ListSlideContentImpl.fromJson;
 
   @override
+  String get id;
+  @override
   SlideContentType get type;
   @override
+  @AlignmentConverter()
+  Alignment get alignment;
+  @override
+  @EdgeInsetsConverter()
+  EdgeInsets get margin;
+  @override
+  @EdgeInsetsConverter()
+  EdgeInsets get padding;
+  @override
+  @ColorConverter()
+  Color get color;
+  @override
+  @ColorConverter()
+  Color get backgroundColor;
+  @override
+  int get rotationDegrees;
+  @override
+  @BorderRadiusConverter()
+  BorderRadius get borderRadius;
+  @override
+  String? get backgroundImageUrl;
+  @override
+  bool get hasDividers;
+  @override
   List<String> get items;
+  @override
+  double get fontSize;
   @override
   @JsonKey(ignore: true)
   _$$ListSlideContentImplCopyWith<_$ListSlideContentImpl> get copyWith =>
@@ -341,9 +888,25 @@ ImageSlideContent _$ImageSlideContentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ImageSlideContent {
+  String get id => throw _privateConstructorUsedError;
   SlideContentType get type => throw _privateConstructorUsedError;
-  @Uint8ListConverter()
-  Uint8List get image => throw _privateConstructorUsedError;
+  @AlignmentConverter()
+  Alignment get alignment => throw _privateConstructorUsedError;
+  @EdgeInsetsConverter()
+  EdgeInsets get margin => throw _privateConstructorUsedError;
+  @EdgeInsetsConverter()
+  EdgeInsets get padding => throw _privateConstructorUsedError;
+  @ColorConverter()
+  Color get color => throw _privateConstructorUsedError;
+  @ColorConverter()
+  Color get backgroundColor => throw _privateConstructorUsedError;
+  int get rotationDegrees => throw _privateConstructorUsedError;
+  @BorderRadiusConverter()
+  BorderRadius get borderRadius => throw _privateConstructorUsedError;
+  String? get backgroundImageUrl => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
+  @OffsetConverter()
+  Offset get size => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -357,7 +920,19 @@ abstract class $ImageSlideContentCopyWith<$Res> {
           ImageSlideContent value, $Res Function(ImageSlideContent) then) =
       _$ImageSlideContentCopyWithImpl<$Res, ImageSlideContent>;
   @useResult
-  $Res call({SlideContentType type, @Uint8ListConverter() Uint8List image});
+  $Res call(
+      {String id,
+      SlideContentType type,
+      @AlignmentConverter() Alignment alignment,
+      @EdgeInsetsConverter() EdgeInsets margin,
+      @EdgeInsetsConverter() EdgeInsets padding,
+      @ColorConverter() Color color,
+      @ColorConverter() Color backgroundColor,
+      int rotationDegrees,
+      @BorderRadiusConverter() BorderRadius borderRadius,
+      String? backgroundImageUrl,
+      String imageUrl,
+      @OffsetConverter() Offset size});
 }
 
 /// @nodoc
@@ -373,18 +948,68 @@ class _$ImageSlideContentCopyWithImpl<$Res, $Val extends ImageSlideContent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? type = null,
-    Object? image = null,
+    Object? alignment = null,
+    Object? margin = null,
+    Object? padding = null,
+    Object? color = null,
+    Object? backgroundColor = null,
+    Object? rotationDegrees = null,
+    Object? borderRadius = null,
+    Object? backgroundImageUrl = freezed,
+    Object? imageUrl = null,
+    Object? size = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SlideContentType,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+      alignment: null == alignment
+          ? _value.alignment
+          : alignment // ignore: cast_nullable_to_non_nullable
+              as Alignment,
+      margin: null == margin
+          ? _value.margin
+          : margin // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      padding: null == padding
+          ? _value.padding
+          : padding // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+      backgroundColor: null == backgroundColor
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+      rotationDegrees: null == rotationDegrees
+          ? _value.rotationDegrees
+          : rotationDegrees // ignore: cast_nullable_to_non_nullable
+              as int,
+      borderRadius: null == borderRadius
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as BorderRadius,
+      backgroundImageUrl: freezed == backgroundImageUrl
+          ? _value.backgroundImageUrl
+          : backgroundImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      size: null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as Offset,
     ) as $Val);
   }
 }
@@ -397,7 +1022,19 @@ abstract class _$$ImageSlideContentImplCopyWith<$Res>
       __$$ImageSlideContentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SlideContentType type, @Uint8ListConverter() Uint8List image});
+  $Res call(
+      {String id,
+      SlideContentType type,
+      @AlignmentConverter() Alignment alignment,
+      @EdgeInsetsConverter() EdgeInsets margin,
+      @EdgeInsetsConverter() EdgeInsets padding,
+      @ColorConverter() Color color,
+      @ColorConverter() Color backgroundColor,
+      int rotationDegrees,
+      @BorderRadiusConverter() BorderRadius borderRadius,
+      String? backgroundImageUrl,
+      String imageUrl,
+      @OffsetConverter() Offset size});
 }
 
 /// @nodoc
@@ -411,18 +1048,68 @@ class __$$ImageSlideContentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? type = null,
-    Object? image = null,
+    Object? alignment = null,
+    Object? margin = null,
+    Object? padding = null,
+    Object? color = null,
+    Object? backgroundColor = null,
+    Object? rotationDegrees = null,
+    Object? borderRadius = null,
+    Object? backgroundImageUrl = freezed,
+    Object? imageUrl = null,
+    Object? size = null,
   }) {
     return _then(_$ImageSlideContentImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SlideContentType,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+      alignment: null == alignment
+          ? _value.alignment
+          : alignment // ignore: cast_nullable_to_non_nullable
+              as Alignment,
+      margin: null == margin
+          ? _value.margin
+          : margin // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      padding: null == padding
+          ? _value.padding
+          : padding // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+      backgroundColor: null == backgroundColor
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+      rotationDegrees: null == rotationDegrees
+          ? _value.rotationDegrees
+          : rotationDegrees // ignore: cast_nullable_to_non_nullable
+              as int,
+      borderRadius: null == borderRadius
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as BorderRadius,
+      backgroundImageUrl: freezed == backgroundImageUrl
+          ? _value.backgroundImageUrl
+          : backgroundImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      size: null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as Offset,
     ));
   }
 }
@@ -431,22 +1118,66 @@ class __$$ImageSlideContentImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ImageSlideContentImpl implements _ImageSlideContent {
   const _$ImageSlideContentImpl(
-      {this.type = SlideContentType.image,
-      @Uint8ListConverter() required this.image});
+      {required this.id,
+      this.type = SlideContentType.image,
+      @AlignmentConverter() this.alignment = Alignment.center,
+      @EdgeInsetsConverter() this.margin = EdgeInsets.zero,
+      @EdgeInsetsConverter() this.padding = EdgeInsets.zero,
+      @ColorConverter() this.color = Colors.black,
+      @ColorConverter() this.backgroundColor = Colors.transparent,
+      this.rotationDegrees = 0,
+      @BorderRadiusConverter() this.borderRadius = BorderRadius.zero,
+      this.backgroundImageUrl,
+      required this.imageUrl,
+      @OffsetConverter() this.size = const Offset(100, 100)});
 
   factory _$ImageSlideContentImpl.fromJson(Map<String, dynamic> json) =>
       _$$ImageSlideContentImplFromJson(json);
 
   @override
+  final String id;
+  @override
   @JsonKey()
   final SlideContentType type;
   @override
-  @Uint8ListConverter()
-  final Uint8List image;
+  @JsonKey()
+  @AlignmentConverter()
+  final Alignment alignment;
+  @override
+  @JsonKey()
+  @EdgeInsetsConverter()
+  final EdgeInsets margin;
+  @override
+  @JsonKey()
+  @EdgeInsetsConverter()
+  final EdgeInsets padding;
+  @override
+  @JsonKey()
+  @ColorConverter()
+  final Color color;
+  @override
+  @JsonKey()
+  @ColorConverter()
+  final Color backgroundColor;
+  @override
+  @JsonKey()
+  final int rotationDegrees;
+  @override
+  @JsonKey()
+  @BorderRadiusConverter()
+  final BorderRadius borderRadius;
+  @override
+  final String? backgroundImageUrl;
+  @override
+  final String imageUrl;
+  @override
+  @JsonKey()
+  @OffsetConverter()
+  final Offset size;
 
   @override
   String toString() {
-    return 'ImageSlideContent(type: $type, image: $image)';
+    return 'ImageSlideContent(id: $id, type: $type, alignment: $alignment, margin: $margin, padding: $padding, color: $color, backgroundColor: $backgroundColor, rotationDegrees: $rotationDegrees, borderRadius: $borderRadius, backgroundImageUrl: $backgroundImageUrl, imageUrl: $imageUrl, size: $size)';
   }
 
   @override
@@ -454,14 +1185,42 @@ class _$ImageSlideContentImpl implements _ImageSlideContent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImageSlideContentImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(other.image, image));
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.margin, margin) || other.margin == margin) &&
+            (identical(other.padding, padding) || other.padding == padding) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.rotationDegrees, rotationDegrees) ||
+                other.rotationDegrees == rotationDegrees) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius) &&
+            (identical(other.backgroundImageUrl, backgroundImageUrl) ||
+                other.backgroundImageUrl == backgroundImageUrl) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.size, size) || other.size == size));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, type, const DeepCollectionEquality().hash(image));
+      runtimeType,
+      id,
+      type,
+      alignment,
+      margin,
+      padding,
+      color,
+      backgroundColor,
+      rotationDegrees,
+      borderRadius,
+      backgroundImageUrl,
+      imageUrl,
+      size);
 
   @JsonKey(ignore: true)
   @override
@@ -480,18 +1239,53 @@ class _$ImageSlideContentImpl implements _ImageSlideContent {
 
 abstract class _ImageSlideContent implements ImageSlideContent, SlideContent {
   const factory _ImageSlideContent(
-          {final SlideContentType type,
-          @Uint8ListConverter() required final Uint8List image}) =
-      _$ImageSlideContentImpl;
+      {required final String id,
+      final SlideContentType type,
+      @AlignmentConverter() final Alignment alignment,
+      @EdgeInsetsConverter() final EdgeInsets margin,
+      @EdgeInsetsConverter() final EdgeInsets padding,
+      @ColorConverter() final Color color,
+      @ColorConverter() final Color backgroundColor,
+      final int rotationDegrees,
+      @BorderRadiusConverter() final BorderRadius borderRadius,
+      final String? backgroundImageUrl,
+      required final String imageUrl,
+      @OffsetConverter() final Offset size}) = _$ImageSlideContentImpl;
 
   factory _ImageSlideContent.fromJson(Map<String, dynamic> json) =
       _$ImageSlideContentImpl.fromJson;
 
   @override
+  String get id;
+  @override
   SlideContentType get type;
   @override
-  @Uint8ListConverter()
-  Uint8List get image;
+  @AlignmentConverter()
+  Alignment get alignment;
+  @override
+  @EdgeInsetsConverter()
+  EdgeInsets get margin;
+  @override
+  @EdgeInsetsConverter()
+  EdgeInsets get padding;
+  @override
+  @ColorConverter()
+  Color get color;
+  @override
+  @ColorConverter()
+  Color get backgroundColor;
+  @override
+  int get rotationDegrees;
+  @override
+  @BorderRadiusConverter()
+  BorderRadius get borderRadius;
+  @override
+  String? get backgroundImageUrl;
+  @override
+  String get imageUrl;
+  @override
+  @OffsetConverter()
+  Offset get size;
   @override
   @JsonKey(ignore: true)
   _$$ImageSlideContentImplCopyWith<_$ImageSlideContentImpl> get copyWith =>

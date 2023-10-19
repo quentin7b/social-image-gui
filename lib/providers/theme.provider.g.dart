@@ -1,25 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'slides.provider.dart';
+part of 'theme.provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$slidesHash() => r'299c2de060550c59c4b78c1e56975cb9009319bb';
+String _$themeHash() => r'32d5db1fa62c573f4b4e93967c42eede2013e0de';
 
-/// See also [Slides].
-@ProviderFor(Slides)
-final slidesProvider = NotifierProvider<Slides,
-    List<(Slide, GlobalKey<State<StatefulWidget>>)>>.internal(
-  Slides.new,
-  name: r'slidesProvider',
+/// See also [Theme].
+@ProviderFor(Theme)
+final themeProvider = NotifierProvider<Theme, ThemeValue>.internal(
+  Theme.new,
+  name: r'themeProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$slidesHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$themeHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Slides = Notifier<List<(Slide, GlobalKey<State<StatefulWidget>>)>>;
+typedef _$Theme = Notifier<ThemeValue>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

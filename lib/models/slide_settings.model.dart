@@ -18,6 +18,7 @@ class SlideSettings with _$SlideSettings {
     @BorderRadiusConverter()
     @Default(BorderRadius.zero)
     BorderRadius borderRadius,
+    String? backgroundImageUrl,
   }) = _SlideSettings;
 
   factory SlideSettings.fromJson(Map<String, Object?> json) =>

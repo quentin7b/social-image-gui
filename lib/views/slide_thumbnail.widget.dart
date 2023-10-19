@@ -1,6 +1,9 @@
+import 'dart:math' as math show pi;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:social_network_mate/models/slide.model.dart';
+import 'package:social_network_mate/models/slide_content.model.dart';
 
 class SlideThumbnail extends ConsumerWidget {
   final Slide slide;
@@ -49,6 +52,14 @@ class SlideThumbnail extends ConsumerWidget {
             ),
             decoration: BoxDecoration(
               color: slide.settings.backgroundColor,
+              image: slide.settings.backgroundImageUrl != null
+                  ? DecorationImage(
+                      image: NetworkImage(
+                        slide.settings.backgroundImageUrl!,
+                      ),
+                      fit: BoxFit.cover,
+                    )
+                  : null,
               borderRadius: BorderRadius.all(
                 Radius.circular(
                   slide.settings.borderRadius.topLeft.x / ratio,
@@ -59,6 +70,7 @@ class SlideThumbnail extends ConsumerWidget {
             height: slideHeightRatio,
             child: Stack(
               children: [
+                // Title
                 if (slide.title.visible)
                   Align(
                     alignment: slide.title.alignment,
@@ -93,6 +105,116 @@ class SlideThumbnail extends ConsumerWidget {
                       ),
                     ),
                   ),
+                // Content
+                ...slide.contents.map(
+                  (c) => Align(
+                    alignment: c.alignment,
+                    child: Transform.rotate(
+                      angle: c.rotationDegrees * (math.pi / 180),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: c.backgroundColor,
+                          image: c.backgroundImageUrl != null
+                              ? DecorationImage(
+                                  image: NetworkImage(
+                                    c.backgroundImageUrl!,
+                                  ),
+                                  fit: BoxFit.cover,
+                                )
+                              : null,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              c.borderRadius.topLeft.x / ratio,
+                            ),
+                          ),
+                        ),
+                        padding: EdgeInsets.only(
+                          left: c.padding.left / ratio,
+                          top: c.padding.top / ratio,
+                          right: c.padding.right / ratio,
+                          bottom: c.padding.bottom / ratio,
+                        ),
+                        margin: EdgeInsets.only(
+                          left: c.margin.left / ratio,
+                          top: c.margin.top / ratio,
+                          right: c.margin.right / ratio,
+                          bottom: c.margin.bottom / ratio,
+                        ),
+                        child: switch (c.type) {
+                          SlideContentType.text => Builder(
+                              builder: (ctx) {
+                                TextSlideContent slideContent =
+                                    c as TextSlideContent;
+                                return Text(
+                                  slideContent.text,
+                                  style: TextStyle(
+                                    color: slideContent.color,
+                                    fontSize: slideContent.fontSize / ratio,
+                                    fontWeight: slideContent.fontWeight,
+                                  ),
+                                );
+                              },
+                            ),
+                          SlideContentType.list => Builder(
+                              builder: (ctx) {
+                                ListSlideContent slideContent =
+                                    c as ListSlideContent;
+                                return Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: slideContent.items
+                                      .map(
+                                        (e) => [
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                              top: c.padding.top / ratio,
+                                              bottom: c.padding.bottom / ratio,
+                                            ),
+                                            child: Text(
+                                              e,
+                                              style: TextStyle(
+                                                color: slideContent.color,
+                                                fontSize:
+                                                    slideContent.fontSize /
+                                                        ratio,
+                                              ),
+                                            ),
+                                          ),
+                                          if (slideContent.hasDividers &&
+                                              slideContent.items.last != e)
+                                            Container(
+                                              color: slideContent.color,
+                                              height: 1 / ratio,
+                                              width: double.infinity,
+                                            ),
+                                        ],
+                                      )
+                                      .expand((element) => element)
+                                      .toList(),
+                                );
+                              },
+                            ),
+                          SlideContentType.image => Builder(
+                              builder: (ctx) {
+                                ImageSlideContent slideContent =
+                                    c as ImageSlideContent;
+                                // Todo check valid url
+                                if (slideContent.imageUrl.isEmpty) {
+                                  return const SizedBox.shrink();
+                                }
+                                return Image.network(
+                                  width: slideContent.size.dx / ratio,
+                                  height: slideContent.size.dy / ratio,
+                                  slideContent.imageUrl,
+                                  fit: BoxFit.cover,
+                                );
+                              },
+                            ),
+                        },
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

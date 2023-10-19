@@ -30,6 +30,7 @@ mixin _$SlideSettings {
   EdgeInsets get padding => throw _privateConstructorUsedError;
   @BorderRadiusConverter()
   BorderRadius get borderRadius => throw _privateConstructorUsedError;
+  String? get backgroundImageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +49,8 @@ abstract class $SlideSettingsCopyWith<$Res> {
       @ColorConverter() Color backgroundColor,
       @EdgeInsetsConverter() EdgeInsets margin,
       @EdgeInsetsConverter() EdgeInsets padding,
-      @BorderRadiusConverter() BorderRadius borderRadius});
+      @BorderRadiusConverter() BorderRadius borderRadius,
+      String? backgroundImageUrl});
 }
 
 /// @nodoc
@@ -69,6 +71,7 @@ class _$SlideSettingsCopyWithImpl<$Res, $Val extends SlideSettings>
     Object? margin = null,
     Object? padding = null,
     Object? borderRadius = null,
+    Object? backgroundImageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       size: null == size
@@ -91,6 +94,10 @@ class _$SlideSettingsCopyWithImpl<$Res, $Val extends SlideSettings>
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as BorderRadius,
+      backgroundImageUrl: freezed == backgroundImageUrl
+          ? _value.backgroundImageUrl
+          : backgroundImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -108,7 +115,8 @@ abstract class _$$SlideSettingsImplCopyWith<$Res>
       @ColorConverter() Color backgroundColor,
       @EdgeInsetsConverter() EdgeInsets margin,
       @EdgeInsetsConverter() EdgeInsets padding,
-      @BorderRadiusConverter() BorderRadius borderRadius});
+      @BorderRadiusConverter() BorderRadius borderRadius,
+      String? backgroundImageUrl});
 }
 
 /// @nodoc
@@ -127,6 +135,7 @@ class __$$SlideSettingsImplCopyWithImpl<$Res>
     Object? margin = null,
     Object? padding = null,
     Object? borderRadius = null,
+    Object? backgroundImageUrl = freezed,
   }) {
     return _then(_$SlideSettingsImpl(
       size: null == size
@@ -149,6 +158,10 @@ class __$$SlideSettingsImplCopyWithImpl<$Res>
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as BorderRadius,
+      backgroundImageUrl: freezed == backgroundImageUrl
+          ? _value.backgroundImageUrl
+          : backgroundImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -161,7 +174,8 @@ class _$SlideSettingsImpl implements _SlideSettings {
       @ColorConverter() this.backgroundColor = Colors.transparent,
       @EdgeInsetsConverter() this.margin = EdgeInsets.zero,
       @EdgeInsetsConverter() this.padding = EdgeInsets.zero,
-      @BorderRadiusConverter() this.borderRadius = BorderRadius.zero});
+      @BorderRadiusConverter() this.borderRadius = BorderRadius.zero,
+      this.backgroundImageUrl});
 
   factory _$SlideSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$SlideSettingsImplFromJson(json);
@@ -185,10 +199,12 @@ class _$SlideSettingsImpl implements _SlideSettings {
   @JsonKey()
   @BorderRadiusConverter()
   final BorderRadius borderRadius;
+  @override
+  final String? backgroundImageUrl;
 
   @override
   String toString() {
-    return 'SlideSettings(size: $size, backgroundColor: $backgroundColor, margin: $margin, padding: $padding, borderRadius: $borderRadius)';
+    return 'SlideSettings(size: $size, backgroundColor: $backgroundColor, margin: $margin, padding: $padding, borderRadius: $borderRadius, backgroundImageUrl: $backgroundImageUrl)';
   }
 
   @override
@@ -202,13 +218,15 @@ class _$SlideSettingsImpl implements _SlideSettings {
             (identical(other.margin, margin) || other.margin == margin) &&
             (identical(other.padding, padding) || other.padding == padding) &&
             (identical(other.borderRadius, borderRadius) ||
-                other.borderRadius == borderRadius));
+                other.borderRadius == borderRadius) &&
+            (identical(other.backgroundImageUrl, backgroundImageUrl) ||
+                other.backgroundImageUrl == backgroundImageUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, size, backgroundColor, margin, padding, borderRadius);
+  int get hashCode => Object.hash(runtimeType, size, backgroundColor, margin,
+      padding, borderRadius, backgroundImageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -226,12 +244,12 @@ class _$SlideSettingsImpl implements _SlideSettings {
 
 abstract class _SlideSettings implements SlideSettings {
   const factory _SlideSettings(
-          {@OffsetConverter() required final Offset size,
-          @ColorConverter() final Color backgroundColor,
-          @EdgeInsetsConverter() final EdgeInsets margin,
-          @EdgeInsetsConverter() final EdgeInsets padding,
-          @BorderRadiusConverter() final BorderRadius borderRadius}) =
-      _$SlideSettingsImpl;
+      {@OffsetConverter() required final Offset size,
+      @ColorConverter() final Color backgroundColor,
+      @EdgeInsetsConverter() final EdgeInsets margin,
+      @EdgeInsetsConverter() final EdgeInsets padding,
+      @BorderRadiusConverter() final BorderRadius borderRadius,
+      final String? backgroundImageUrl}) = _$SlideSettingsImpl;
 
   factory _SlideSettings.fromJson(Map<String, dynamic> json) =
       _$SlideSettingsImpl.fromJson;
@@ -251,6 +269,8 @@ abstract class _SlideSettings implements SlideSettings {
   @override
   @BorderRadiusConverter()
   BorderRadius get borderRadius;
+  @override
+  String? get backgroundImageUrl;
   @override
   @JsonKey(ignore: true)
   _$$SlideSettingsImplCopyWith<_$SlideSettingsImpl> get copyWith =>

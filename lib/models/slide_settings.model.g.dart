@@ -8,23 +8,24 @@ part of 'slide_settings.model.dart';
 
 _$SlideSettingsImpl _$$SlideSettingsImplFromJson(Map<String, dynamic> json) =>
     _$SlideSettingsImpl(
-      size:
-          const OffsetConverter().fromJson(json['size'] as Map<String, double>),
+      size: const OffsetConverter()
+          .fromJson(json['size'] as Map<String, dynamic>),
       backgroundColor: json['backgroundColor'] == null
           ? Colors.transparent
-          : const ColorConverter().fromJson(json['backgroundColor'] as int),
+          : const ColorConverter().fromJson(json['backgroundColor'] as String),
       margin: json['margin'] == null
           ? EdgeInsets.zero
           : const EdgeInsetsConverter()
-              .fromJson(json['margin'] as Map<String, double>),
+              .fromJson(json['margin'] as Map<String, dynamic>),
       padding: json['padding'] == null
           ? EdgeInsets.zero
           : const EdgeInsetsConverter()
-              .fromJson(json['padding'] as Map<String, double>),
+              .fromJson(json['padding'] as Map<String, dynamic>),
       borderRadius: json['borderRadius'] == null
           ? BorderRadius.zero
           : const BorderRadiusConverter()
               .fromJson(json['borderRadius'] as Map<String, dynamic>),
+      backgroundImageUrl: json['backgroundImageUrl'] as String?,
     );
 
 Map<String, dynamic> _$$SlideSettingsImplToJson(_$SlideSettingsImpl instance) =>
@@ -36,4 +37,5 @@ Map<String, dynamic> _$$SlideSettingsImplToJson(_$SlideSettingsImpl instance) =>
       'padding': const EdgeInsetsConverter().toJson(instance.padding),
       'borderRadius':
           const BorderRadiusConverter().toJson(instance.borderRadius),
+      'backgroundImageUrl': instance.backgroundImageUrl,
     };

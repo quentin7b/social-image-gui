@@ -14,10 +14,11 @@ class SlideSettingsPane extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final expandedIndex = ref.watch(_expandedItemProvider);
     return Container(
-      padding: const EdgeInsets.all(8),
-      color: Colors.red,
+      margin: const EdgeInsets.all(16),
       child: SingleChildScrollView(
         child: ExpansionPanelList(
+          elevation: 2,
+          materialGapSize: 2,
           expansionCallback: (int index, bool isExpanded) {
             final expandedList = ref.read(_expandedItemProvider);
             ref.read(_expandedItemProvider.notifier).state = isExpanded
@@ -29,15 +30,17 @@ class SlideSettingsPane extends ConsumerWidget {
             ('Title', const TitleSettings()),
             ('Content', const ContentSettings()),
           ]
-              .asMap()
-              .entries
+              .indexed
               .map(
                 (me) => ExpansionPanel(
                   headerBuilder: (context, isExpanded) => Center(
-                    child: Text(me.value.$1),
+                    child: Text(me.$2.$1),
                   ),
-                  isExpanded: expandedIndex.contains(me.key),
-                  body: me.value.$2,
+                  isExpanded: expandedIndex.contains(me.$1),
+                  body: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: me.$2.$2,
+                  ),
                 ),
               )
               .toList(),

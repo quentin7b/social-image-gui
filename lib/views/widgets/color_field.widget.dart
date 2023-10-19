@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:social_network_mate/utils/extensions/color.extension.dart';
+import 'package:social_network_mate/views/widgets/custom_text_field.widget.dart';
 
 class ColorField extends StatelessWidget {
   final String label;
@@ -19,23 +20,63 @@ class ColorField extends StatelessWidget {
     return Row(
       children: [
         Expanded(child: Text(label)),
-        const SizedBox(width: 8),
         Expanded(
-          child: TextField(
-            keyboardType: TextInputType.text,
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.allow(
-                RegExp(r'^#?([0-9a-fA-F]{4,8})$'),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  value: value.toHex(),
+                  onChanged: (value) {
+                    onChanged(HexColor.fromHex(value));
+                  },
+                ),
+              ),
+              const SizedBox(width: 8),
+              InkWell(
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: value,
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 1,
+                      style: BorderStyle.solid,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (ctx) {
+                      return AlertDialog(
+                        title: const Text('Pick a color!'),
+                        content: SingleChildScrollView(
+                          child: HueRingPicker(
+                            pickerColor: value,
+                            onColorChanged: (color) {
+                              onChanged(color);
+                            },
+                            displayThumbColor: false,
+                            enableAlpha: true,
+                          ),
+                        ),
+                        actions: [
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('Fermer'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
               ),
             ],
-            controller: TextEditingController(
-              text: value.toHex(),
-            )..selection = TextSelection.collapsed(
-                offset: value.toHex().length,
-              ),
-            onChanged: (value) => onChanged(
-              HexColor.fromHex(value),
-            ),
           ),
         ),
       ],
